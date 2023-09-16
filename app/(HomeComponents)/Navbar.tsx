@@ -43,7 +43,7 @@ function Navbar({}: Props) {
           Apply Now
         </Link>
         <Link
-          href="/login"
+          href="/signIn"
           className="w-[15%]  h-[50%] rounded-[40px] bg-[#fe0000] text-base text-white flex items-center justify-center cursor-pointer"
         >
           Login
