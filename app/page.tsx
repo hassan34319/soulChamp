@@ -11,7 +11,7 @@ import Footer from './(HomeComponents)/Footer'
 
 export default function Home() {
   return (
-    <main className='min-h-[100vh]'>
+    <main className='min-h-[100vh] flex flex-col gap-y-2 md:gap-y-4 lg:gap-y-8'>
       <Hero/>
       <Principles/>
       <Application/>

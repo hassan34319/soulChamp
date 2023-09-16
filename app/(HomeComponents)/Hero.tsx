@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 type Props = {};
 
 function Hero({}: Props) {
-  const backgroundImageUrl = "/signin.png";
+  const backgroundImageUrl = "/signIn.png";
   return (
     <main
       className="bg-cover bg-top min-h-[100vh] "
