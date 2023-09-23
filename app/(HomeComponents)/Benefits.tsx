@@ -1,11 +1,17 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import { ImageArray } from "../types";
+import { urlFor } from "../utils/urlFor";
 
-type Props = {};
+type Props = {
+  benefits: ImageArray[];
+};
 
-function Benefits({}: Props) {
-  const images = ["/member1.png", "/member3.png", "/member3.png"]; // Add more image URLs as needed
+function Benefits({benefits}: Props) {
+  const images = benefits[0].images.map((benefit)=> {
+    return urlFor(benefit).url()
+  }) // Add more image URLs as needed // Add more image URLs as needed
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

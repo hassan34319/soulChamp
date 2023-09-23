@@ -1,11 +1,15 @@
 import Link from "next/link";
 import React from "react";
+import { ImageOne } from "../types";
+import { urlFor } from "../utils/urlFor";
 import Navbar from "./Navbar";
 
-type Props = {};
+type Props = {
+  homeBackground : ImageOne[];
+};
 
-function Hero({}: Props) {
-  const backgroundImageUrl = "/signIn.png";
+function Hero({homeBackground}: Props) {
+  const backgroundImageUrl = urlFor(homeBackground[0].image).url();
   return (
     <main
       className="bg-cover bg-top min-h-[100vh] "

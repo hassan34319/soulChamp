@@ -1,5 +1,6 @@
 import { useStateContext } from "@/app/context/stateContext";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { setgroups } from "process";
 import React, { useEffect, useState } from "react";
 
@@ -123,16 +124,19 @@ function View1({ setView }: Props) {
       setView("view2"); // Call the function to navigate
     }
   };
+  const router= useRouter()
 
   return (
-    <div className="flex flex-col items-center w-[90%] mx-auto mt-10">
+    <>
+    <p onClick={()=>router.back()} className="text-sm md:text-base text-white hover:underline mt-10 ml-6 cursor-pointer">Back</p>
+    <div className="flex flex-col items-center w-[90%] mx-auto">
       <h1 className="font-semibold text-2xl text-white text-center md:text-3xl lg:text-5xl">
         Soul Champ Immersive Training Application
       </h1>
       <h3 className="text-white text-center text-xs mt-4 md:mt-6 opacity-80 font-normal md:text-lg lg:text-xl">
         Section 1 - Participant Information
       </h3>
-      <div className="relative mt-3 h-8 w-[35%] md:mt-5 md:h-12 lg:w-[25%] lg:h-10">
+      <div className="relative mt-3 h-8 w-[35%] md:mt-5 md:h-12 lg:w-[25%] lg:h-10 flex justify-center">
         <svg
           width="120"
           height="18"
@@ -349,6 +353,7 @@ function View1({ setView }: Props) {
         </button>
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React from "react";
+import { ImageArray, ImageOne } from "../types";
+import { urlFor } from "../utils/urlFor";
 
-type Props = {};
+type Props = {
+  application: ImageOne[];
+};
 
-function Application({}: Props) {
-  const backgroundImageUrl = "/signup.png";
+function Application({application}: Props) {
+  const backgroundImageUrl = urlFor(application[0].image).url();
   return (
     <main
       className="bg-cover bg-top min-h-[50vh] flex items-center "

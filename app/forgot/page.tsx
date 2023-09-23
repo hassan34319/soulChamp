@@ -2,11 +2,19 @@ import React from "react";
 import Logo from "../(UiComponents)/Logo";
 import { Email, Eye, Password } from "../(UiComponents)/Icons";
 import ForgotContent from "./(ForgotComponents)/ForgotContent";
+import { urlFor } from "../utils/urlFor";
+import { client } from "../utils/client";
 
 type Props = {};
+export const revalidate =60
+async function Forgot({}: Props) {
+  const forgotBackground = await client.fetch(`
+  *[_type == "forgotBackground"] {
+    ...
+  }
+`);
 
-function Forgot({}: Props) {
-  const backgroundImageUrl = "/forgotPassword.png"; // Replace 'jpg' with the actual file extension of your image.
+  const backgroundImageUrl = urlFor(forgotBackground[0].image).url();  // Replace 'jpg' with the actual file extension of your image.
 
   return (
     <main

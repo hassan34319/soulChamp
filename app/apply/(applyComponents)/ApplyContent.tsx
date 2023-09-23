@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import View1 from "./View1";
 import View2 from "./View2";
@@ -11,9 +12,10 @@ type Props = {};
 
 function ApplyContent({}: Props) {
   const [viewName, setView] = useState("view1");
-
+  const router= useRouter()
   return (
     <main className="w-full">
+      
       {viewName === "view1" && <View1 setView={setView} />}
       {viewName === "view2" && <View2 setView={setView} />}
       {viewName === "view3" && <View3 setView={setView} />}

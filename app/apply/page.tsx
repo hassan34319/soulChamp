@@ -1,10 +1,18 @@
+import { client } from "../utils/client";
+import { urlFor } from "../utils/urlFor";
 import ApplyContent from "./(applyComponents)/ApplyContent";
 
 type Props = {};
+export const revalidate =60
 
-function Forgot({}: Props) {
-  const backgroundImageUrl = "/signIn.png"; // Replace 'jpg' with the actual file extension of your image.
+async function Apply({}: Props) {
+  const applyBackground = await client.fetch(`
+  *[_type == "applyBackground"] {
+    ...
+  }
+`);
 
+  const backgroundImageUrl = urlFor(applyBackground[0].image).url(); // Replace 'jpg' with the actual file extension of your image.
   return (
     <main
       className="bg-cover bg-top min-h-[100vh] flex items-center"
@@ -17,4 +25,4 @@ function Forgot({}: Props) {
   );
 }
 
-export default Forgot;
+export default Apply;

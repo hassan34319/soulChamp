@@ -1,9 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { ImageArray } from "../types";
+import { urlFor } from "../utils/urlFor";
 
-type Props = {};
+type Props = {
+  principles: ImageArray[];
+};
 
-function Principles({}: Props) {
+function Principles({ principles }: Props) {
   return (
     <main className="bg-black h-[50vh] flex  flex-col items-center ">
       <h1 className="font-semibold text-2xl md:text-5xl  lg:text-4xl mt-[6vh]">
@@ -17,18 +21,18 @@ function Principles({}: Props) {
         network.
       </p>
       <div className="flex flex-row h-[26%] md:h-[45%] justify-between mx-auto w-[95%] mt-[5vh] ">
-        <div className=" relative lg:w-[24%] w-[45%] h-full">
-            <Image src="/yoga2.png" alt="yoga2" fill className="object-cover rounded-lg"/>
-        </div>
-        <div className="relative  lg:w-[24%] w-[45%]   h-full">
-            <Image src="/yoga3.png" alt="yoga1" fill className="object-cover rounded-lg"/>
-        </div>
-        <div className="relative hidden lg:flex  w-[24%]  h-full">
-            <Image src="/yoga4.png" alt="yoga1" fill className="object-cover rounded-lg"/>
-        </div>
-        <div className="relative hidden lg:flex w-[24%]  h-full">
-            <Image src="/signup.png" alt="yoga1" fill className="object-cover rounded-lg"/>
-        </div>
+        {principles[0].images.map((principle) => {
+          return (
+            <div className=" relative lg:w-[24%] w-[45%] h-full">
+              <Image
+                src={urlFor(principle).url()}
+                alt="yoga2"
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
+          );
+        })}
       </div>
     </main>
   );

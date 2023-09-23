@@ -1,9 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { ImageArray } from "../types";
+import { urlFor } from "../utils/urlFor";
 
-type Props = {};
+type Props = {
+  activities: ImageArray[];
+};
 
-function Activities({}: Props) {
+function Activities({activities}: Props) {
   return (
     <main className="bg-[#fe0000] h-[60vh] lg:h-[70vh] flex  flex-col items-center ">
       <h1 className="font-semibold text-2xl md:text-5xl  lg:text-4xl mt-[3vh]">
@@ -19,23 +23,13 @@ function Activities({}: Props) {
         your goals and financial health!
       </p>
       <div className="flex flex-row h-[35%] lg:h-[50%] md:h-[40%] justify-center lg:justify-between mx-auto w-[95%] mt-[5vh] space-x-4 ">
-        <div className=" relative lg:w-[24%] w-[45%] h-full">
-          <Image src="/act5.png" alt="yoga2" fill className="object-contain" />
+      {activities[0].images.map((activity)=> {
+        return (
+        <div className="relative lg:w-[24%] w-[45%] h-full">
+          <Image src={urlFor(activity).url()} alt="yoga2" fill className="object-contain" />
         </div>
-        <div className="relative  lg:w-[24%] w-[45%]   h-full">
-          <Image src="/act2.png" alt="yoga1" fill className="object-contain" />
-        </div>
-        <div className="relative hidden lg:flex  w-[24%]  h-full">
-          <Image src="/act3.png" alt="yoga1" fill className="object-contain" />
-        </div>
-        <div className="relative hidden lg:flex w-[24%]  h-full">
-          <Image
-            src="/act6.png"
-            alt="yoga1"
-            fill
-            className="object-contain"
-          />
-        </div>
+        )
+      })}
       </div>
     </main>
   );
